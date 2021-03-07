@@ -1,6 +1,8 @@
 
 # Open MySQL server firewall to your IP address
 
+[![mysql/open-firewall-to-your-ip/README.md](https://github.com/Azure-Samples/java-on-azure-examples/actions/workflows/mysql_open-firewall-to-your-ip_README_md.yml/badge.svg)](https://github.com/Azure-Samples/java-on-azure-examples/actions/workflows/mysql_open-firewall-to-your-ip_README_md.yml)
+
 ## Prerequisites
 
 This example assumes you have previously completed the following:
@@ -8,6 +10,8 @@ This example assumes you have previously completed the following:
 1. [Create an Azure Resource Group](../../group/create/)
 1. [Create an Azure Database for MySQL](../create/)
 1. [Install curl](https://curl.haxx.se/download.html)
+
+<!-- workflow.include(../create/README.md) -->
 
 ## Open MySQL server firewall to your local IP address
 

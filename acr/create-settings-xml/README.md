@@ -1,6 +1,8 @@
 
 # Create settings.xml using admin access keys
 
+![acr/create-settings-xml/README.md](https://github.com/Azure-Samples/java-on-azure-examples/workflows/acr/create-settings-xml/README.md/badge.svg)
+
 ```text
 Note for production environments we recommend you setup
 a service principal instead of using admin access keys
@@ -17,6 +19,12 @@ This example assumes you have previously completed the following examples.
 <!-- workflow.include(../create/README.md) -->
 
 ## Create the settings.xml
+
+<!-- workflow.run() 
+
+cd acr/create-settings-xml
+
+ -->
 
 Get the ACR username
 
@@ -37,6 +45,12 @@ Set the SETTINGS_XML variable
 ```shell
   export SETTINGS_XML=$PWD/settings.xml
 ```
+
+<!-- workflow.run() 
+
+cd ../..
+
+ -->
 
 <!-- workflow.directOnly()
 az group delete --name $RESOURCE_GROUP --yes || true

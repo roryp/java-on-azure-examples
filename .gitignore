@@ -1,1 +1,9 @@
+.classpath
+.factorypath
+.idea/
+.project
+.settings/
+.vscode/
+parrot.jar
 target/
+*.iml

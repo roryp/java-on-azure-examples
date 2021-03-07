@@ -1,6 +1,8 @@
 
 # Deploy Jetty using a Docker image
 
+[![appservice/docker-jetty/README.md](https://github.com/Azure-Samples/java-on-azure-examples/actions/workflows/appservice_docker-jetty_README_md.yml/badge.svg)](https://github.com/Azure-Samples/java-on-azure-examples/actions/workflows/appservice_docker-jetty_README_md.yml)
+
 ## Prerequisites
 
 This example assumes you have previously completed the following examples.
@@ -13,6 +15,16 @@ This example assumes you have previously completed the following examples.
 
 ## Deploy Jetty using a Docker image
 
+<!-- workflow.include(../../acr/jetty/README.md) -->
+<!-- workflow.include(../../acr/create-settings-xml/README.md) -->
+<!-- workflow.include(../create-plan/README.md) -->
+
+<!-- workflow.run() 
+
+cd appservice/docker-jetty
+
+  -->
+
 To deploy Jetty use the following command lines:
 
 ```shell
@@ -21,7 +33,7 @@ To deploy Jetty use the following command lines:
   mvn azure-webapp:deploy \
     --settings=$SETTINGS_XML \
     -DappName=$APPSERVICE_DOCKER_JETTY \
-    -DimageName=acr-jetty:latest \
+    -DimageName=jetty:latest \
     -DappServicePlan=$APPSERVICE_PLAN \
     -DresourceGroup=$RESOURCE_GROUP \
     -DserverId=$ACR
@@ -29,9 +41,16 @@ To deploy Jetty use the following command lines:
   az webapp show \
     --resource-group $RESOURCE_GROUP \
     --name $APPSERVICE_DOCKER_JETTY \
-    --query hostNames[0] \
+    --query 'hostNames[0]' \
     --output tsv
 ```
+
+<!-- workflow.run()
+
+sleep 180
+cd ../..
+
+  -->
 
 Then open your browser to the URL shown as output and you should see:
 
@@ -39,6 +58,27 @@ Then open your browser to the URL shown as output and you should see:
 And this is served by a custom Jetty using a Docker image coming from our 
 own Azure Container Registry.
 ```
+
+<!-- workflow.directOnly()
+
+export RESULT=$(az webapp show --resource-group $RESOURCE_GROUP --name $APPSERVICE_DOCKER_JETTY --output tsv --query state)
+if [[ "$RESULT" != Running ]]; then
+  echo 'Web application is NOT running'
+  az group delete --name $RESOURCE_GROUP --yes || true
+  exit 1
+fi
+
+export URL=https://$(az webapp show --resource-group $RESOURCE_GROUP --name $APPSERVICE_DOCKER_JETTY --output tsv --query defaultHostName)
+export RESULT=$(curl $URL)
+
+az group delete --name $RESOURCE_GROUP --yes || true
+
+if [[ "$RESULT" != *"custom Jetty"* ]]; then
+  echo "Response did not contain 'custom Jetty'"
+  exit 1
+fi
+
+  -->
 
 ## Properties supported by the example
 

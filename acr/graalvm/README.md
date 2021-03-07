@@ -1,6 +1,8 @@
 
 # Push a GraalVM Docker application to Azure Container Registry
 
+![acr/graalvm/README.md](https://github.com/Azure-Samples/java-on-azure-examples/workflows/acr/graalvm/README.md/badge.svg)
+
 ## Prerequisites
 
 This example assumes you have previously completed the following:
@@ -42,7 +44,7 @@ the command line below. Note if you are on Windows please replace $PWD with the
 path of the current directory.
 
 ```shell
-  docker run --rm -it -v $PWD/../..:/mnt builder mvn -P graalvm -pl acr/graalvm clean install  
+  docker run --rm --tty -v $PWD/../..:/mnt builder mvn -P graalvm -pl acr/graalvm clean install  
 ```
 
 ## Build and push the Docker image to your Azure Container Registry
